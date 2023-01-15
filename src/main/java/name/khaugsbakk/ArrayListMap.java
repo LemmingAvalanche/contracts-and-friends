@@ -14,7 +14,7 @@ public class ArrayListMap<K, V> implements Dictionary<K, V> {
         int preSize = list.size();
 
         int index = indexOf(key);
-        if (index > -1) {
+        if (index != -1) {
             list.set(index, Pair.of(key, value));
         } else {
             list.add(Pair.of(key, value));
