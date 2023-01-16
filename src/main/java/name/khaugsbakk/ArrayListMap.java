@@ -33,6 +33,11 @@ public class ArrayListMap<K, V> implements Dictionary<K, V> {
         }
     }
 
+    @Override
+    public int size() {
+        return list.size();
+    }
+
     private int indexOf(K key) {
         for (int i = 0; i < list.size(); i++) {
             if (key.equals(list.get(i).getKey())) {
