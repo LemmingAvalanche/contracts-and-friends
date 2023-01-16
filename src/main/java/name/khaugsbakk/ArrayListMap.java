@@ -20,7 +20,7 @@ public class ArrayListMap<K, V> implements Dictionary<K, V> {
             list.add(Pair.of(key, value));
         }
         assert list.size() >= preSize;
-        assert get(key).isPresent();
+        assert get(key).get().equals(value);
     }
 
     @Override
