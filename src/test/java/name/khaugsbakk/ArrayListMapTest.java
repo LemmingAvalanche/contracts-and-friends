@@ -13,6 +13,7 @@ public class ArrayListMapTest {
         assertEquals(dict.get(1).get(), "One");
     }
 
+    @Test
     public void overwriteOne() {
         var dict = new ArrayListMap<Integer, String>();
         dict.insert(1, "One");
@@ -20,11 +21,12 @@ public class ArrayListMapTest {
         assertEquals(dict.get(1).get(), "Uno");
     }
 
+    @Test
     public void addTwo() {
         var dict = new ArrayListMap<Integer, String>();
         dict.insert(1, "One");
         dict.insert(2, "Two");
         assertEquals(dict.get(1).get(), "One");
-        assertEquals(dict.get(1).get(), "Two");
+        assertEquals(dict.get(2).get(), "Two");
     }
 }
