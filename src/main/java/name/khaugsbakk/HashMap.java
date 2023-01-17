@@ -27,8 +27,8 @@ public class HashMap<K, V> implements Dictionary<K, V> {
         for (int i = 0; i < newCapacity; i++) {
             newMap.add(new ArrayListMap<>());
         }
-        for (var subMap : oldMap) {
-            for (var pair : subMap) {
+        for (var bucket : oldMap) {
+            for (var pair : bucket) {
                 insert(pair.getKey(), pair.getValue());
             }
         }
@@ -60,8 +60,8 @@ public class HashMap<K, V> implements Dictionary<K, V> {
     @Override
     public int size() {
         int size = 0;
-        for (var subMap : map) {
-            size += subMap.size();
+        for (var bucket : map) {
+            size += bucket.size();
         }
         return size;
     }
