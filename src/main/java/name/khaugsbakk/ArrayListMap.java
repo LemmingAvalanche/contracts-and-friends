@@ -4,6 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Optional;
 import java.util.Spliterator;
 import java.util.function.Consumer;
@@ -52,28 +53,6 @@ public class ArrayListMap<K, V> implements Dictionary<K, V>, Iterable<Pair<K, V>
 
     @Override
     public Iterator<Pair<K, V>> iterator() {
-        return new CustomIterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Pair<K, V>> action) {
-        Iterable.super.forEach(action);
-    }
-
-    @Override
-    public Spliterator<Pair<K, V>> spliterator() {
-        return Iterable.super.spliterator();
-    }
-
-    class CustomIterator implements Iterator<Pair<K, V>> {
-        @Override
-        public boolean hasNext() {
-            return list.iterator().hasNext();
-        }
-
-        @Override
-        public Pair<K, V> next() {
-            return list.iterator().next();
-        }
+        return list.iterator();
     }
 }
