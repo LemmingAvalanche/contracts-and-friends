@@ -29,4 +29,13 @@ public class ArrayListMapTest {
         assertEquals(dict.get(1).get(), "One");
         assertEquals(dict.get(2).get(), "Two");
     }
+
+    @Test
+    public void sixHundredInsertsAndSizeSixHundred() {
+        var dict = new ArrayListMap<Integer, String>();
+        for (int i = 0; i < 600; i++) {
+            dict.insert(i, "" + i);
+        }
+        assertEquals(600, dict.size());
+    }
 }

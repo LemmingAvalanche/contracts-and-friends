@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HashMapTest {
 
-    // First three tests copied from `ArrayListMapTest`
+    // First four tests copied from `ArrayListMapTest`
 
     @Test
     public void addOne() {
@@ -32,6 +32,15 @@ public class HashMapTest {
         assertEquals(dict.get(2).get(), "Two");
     }
 
-    // End: First three tests copied from `ArrayListMapTest`
+    @Test
+    public void sixHundredInsertsAndSizeSixHundred() {
+        var dict = new HashMap<>();
+        for (int i = 0; i < 600; i++) {
+            dict.insert(i, "" + i);
+        }
+        assertEquals(600, dict.size());
+    }
+
+    // End: First four tests copied from `ArrayListMapTest`
 
 }
