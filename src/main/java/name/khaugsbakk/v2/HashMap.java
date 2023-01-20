@@ -44,7 +44,6 @@ public class HashMap<K, V> implements Dictionary<K, V> {
 
     @Override
     public boolean insert(K key, V value) {
-        // TODO can we do this check less often?
         if (((float) size) / ((float) map.size()) > loadFactor) {
             resize();
         }
