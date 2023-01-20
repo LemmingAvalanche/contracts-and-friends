@@ -1,13 +1,10 @@
-package name.khaugsbakk;
+package name.khaugsbakk.v1;
 
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.Optional;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class ArrayListMap<K, V> implements Dictionary<K, V>, Iterable<Pair<K, V>> {
 

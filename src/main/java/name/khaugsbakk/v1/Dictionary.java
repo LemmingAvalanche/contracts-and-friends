@@ -1,4 +1,4 @@
-package name.khaugsbakk;
+package name.khaugsbakk.v1;
 
 import java.util.Optional;
 

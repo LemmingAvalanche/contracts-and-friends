@@ -1,6 +1,4 @@
-package name.khaugsbakk;
-
-import org.apache.commons.lang3.tuple.Pair;
+package name.khaugsbakk.v1;
 
 import java.util.ArrayList;
 import java.util.Optional;
