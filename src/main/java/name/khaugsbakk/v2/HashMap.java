@@ -47,7 +47,7 @@ public class HashMap<K, V> implements Dictionary<K, V> {
         if (((float) size) / ((float) map.size()) > loadFactor) {
             resize();
         }
-        int preSize = size();
+        int preSize = size;
 
         int hash = key.hashCode();
         int index = hash % map.size();
@@ -56,7 +56,7 @@ public class HashMap<K, V> implements Dictionary<K, V> {
             updateSize(size + 1);
         }
 
-        assert size() >= preSize;
+        assert size >= preSize;
         assert get(key).get().equals(value);
         return existed;
     }
