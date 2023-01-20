@@ -63,12 +63,17 @@ public class HashMap<K, V> implements Dictionary<K, V> {
 
     @Override
     public boolean remove(K key) {
+        int preSize = size;
+
         int hash = key.hashCode();
         int index = hash % map.size();
         boolean existed = map.get(index).remove(key);
         if (existed) {
             updateSize(size - 1);
         }
+
+        assert size <= preSize;
+        assert get(key).isEmpty();
         return existed;
     }
 
