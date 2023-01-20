@@ -14,17 +14,20 @@ public class ArrayListMap<K, V> implements Dictionary<K, V>, Iterable<Pair<K, V>
     private final ArrayList<Pair<K, V>> list = new ArrayList<>();
 
     @Override
-    public void insert(K key, V value) {
+    public boolean insert(K key, V value) {
         int preSize = list.size();
 
         int index = indexOf(key);
+        boolean existed = false;
         if (index != -1) {
             list.set(index, Pair.of(key, value));
+            existed = true;
         } else {
             list.add(Pair.of(key, value));
         }
         assert list.size() >= preSize;
         assert get(key).get().equals(value);
+        return existed;
     }
 
     @Override

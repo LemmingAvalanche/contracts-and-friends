@@ -12,6 +12,8 @@ public class HashMap<K, V> implements Dictionary<K, V> {
 
     private static final float loadFactor = 0.7f;
 
+    private int size = 0;
+
     ArrayList<ArrayListMap<K, V>> map = new ArrayList<>();
     {
         for (int i = 0; i < SIZE; i++) {
@@ -24,6 +26,7 @@ public class HashMap<K, V> implements Dictionary<K, V> {
         int newCapacity = map.size() * 2;
         var newMap = new ArrayList<ArrayListMap<K, V>>(newCapacity);
         this.map = newMap;
+        size = 0;
         for (int i = 0; i < newCapacity; i++) {
             newMap.add(new ArrayListMap<>());
         }
@@ -42,23 +45,36 @@ public class HashMap<K, V> implements Dictionary<K, V> {
     }
 
     @Override
-    public void insert(K key, V value) {
+    public boolean insert(K key, V value) {
         // TODO can we do this check less often?
-        if (((float) size()) / ((float) map.size()) > loadFactor) {
+        if (((float) size) / ((float) map.size()) > loadFactor) {
             resize();
         }
         int preSize = size();
 
         int hash = key.hashCode();
         int index = hash % map.size();
-        map.get(index).insert(key, value);
+        boolean existed = map.get(index).insert(key, value);
+        if (!existed) {
+            updateSize(size + 1);
+        }
 
         assert size() >= preSize;
         assert get(key).get().equals(value);
+        return existed;
     }
 
     @Override
     public int size() {
+        return size;
+    }
+
+    private void updateSize(int s) {
+        this.size = s;
+        assert s == expensiveSize();
+    }
+
+    private int expensiveSize() {
         int size = 0;
         for (var bucket : map) {
             size += bucket.size();
